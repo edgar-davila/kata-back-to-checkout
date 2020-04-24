@@ -1,18 +1,18 @@
 import scala.collection.mutable.Stack
 
 object Checkout {
-  var items = new Stack[Fruit]()
+  var cart = new Stack[Fruit]()
 
   def add(fruit: Fruit) = {
-    items.push(fruit)
+    cart.push(fruit)
   }
 
   def calcTotal(): Int = {
     var sum = 0
-    while (!items.isEmpty){
-      sum += items.pop().price
+    while (cart.nonEmpty){
+      sum += cart.pop().price
     }
-    return sum
+    sum
   }
 
   def main(args: Array[String]): Unit = {
