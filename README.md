@@ -12,7 +12,9 @@ This is the base project/settings for the kata inspired in 'back to checkout' by
 - Scala Plugin for IntelliJ (https://www.jetbrains.com/help/idea/discover-intellij-idea-for-scala.html)
 
 # Exercise
-
+We need to improve the checkout system of an existing fruit store, it currently supports the most basic thing: 
+- It has a cart where the user can add an item with a price.
+- It calculates the total amount the customer has to pay.
 ## Iteration 1
 
 ## Iteration 2
