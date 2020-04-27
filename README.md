@@ -85,7 +85,7 @@ Example cart results:
 - Cart with 100 bananas for a premium user: $1200
 - Cart with 100 bananas for an international user: $1000
 
-#Objective of this kata
+# Objective of this kata
 The main objective of this exercise can be synthesized in one word: Decoupling. 
 
 While doing this exercise, you'll see that depending on how the participants evolved they'll be forced to refactor their 
