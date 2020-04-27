@@ -11,6 +11,8 @@ This is the base project/settings for the kata inspired in 'back to checkout' by
 - IntelliJ IDEA
 - Scala Plugin for IntelliJ (https://www.jetbrains.com/help/idea/discover-intellij-idea-for-scala.html)
 
+For online katas, you might consider adding:
+- Teamhub Plugin for IntelliJ (https://plugins.jetbrains.com/plugin/11955-teamhub)
 # Exercise
 
 ## Iteration 1
