@@ -1,10 +1,10 @@
-import scala.collection.mutable.Stack
+import scala.collection.mutable
 
 object Checkout {
-  var cart = new Stack[Fruit]()
+  var cart = new mutable.Stack[Item]()
 
-  def add(fruit: Fruit) = {
-    cart.push(fruit)
+  def add(item: Item) = {
+    cart.push(item)
   }
 
   def calcTotal(): Int = {
@@ -25,8 +25,8 @@ object Checkout {
     println("Total is " + checkout.calcTotal())
   }
 
-  class Fruit(val price: Int) {
-
+  trait Item {
+    def price : Int
   }
 
 }
