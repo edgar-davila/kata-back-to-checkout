@@ -1,6 +1,6 @@
 import scala.collection.mutable
 
-class Checkout {
+class Checkout(val weekDay: String = WeekDay.everyDay) {
   var cart = new mutable.HashMap[Fruit, Int]()
 
   def add(item: Fruit) = {
