@@ -8,21 +8,23 @@ class CheckoutTest extends org.scalatest.FunSuite {
     assert(checkout.calcTotal() === 30)
   }
 
-  test("get price with bulk discount for two apple is 40") {
+  test("get price with bulk discount for two apple discount is 0") {
     val apple1 = new Apple()
-
-    assert(apple1.getPriceWithBulkDiscount(2) == 40)
+    val discountFactory = new DiscountFactory()
+    assert(discountFactory.calculateDiscount(Map(apple1 -> 2), WeekDay.everyDay) == 0)
   }
 
-  test("get price with bulk discount for three pears is 18") {
+  test("get price with bulk discount for 2 pears discount is 18") {
     val pear = new Pear()
-    assert(pear.getPriceWithBulkDiscount(2) == 18)
+    val discountFactory = new DiscountFactory()
+    assert(discountFactory.calculateDiscount(Map(pear -> 2), WeekDay.everyDay) == 2)
   }
 
-  test("test get price with bulk discount for 3 apples is 50") {
+  test("test get price with bulk discount for 3 apples discount is 50") {
     val apple1 = new Apple()
 
-    assert(apple1.getPriceWithBulkDiscount(3) == 50)
+    val discountFactory = new DiscountFactory()
+    assert(discountFactory.calculateDiscount(Map(apple1 -> 3), WeekDay.monday) == 10)
   }
 
   test("test get price of cart with 2 pear and 1 apple") {
@@ -56,6 +58,44 @@ class CheckoutTest extends org.scalatest.FunSuite {
     checkout.add(pear)
 
     assert(checkout.calcTotal() == 18)
+  }
+
+  test("test get price of cart with apples when its monday") {
+    val checkout = new Checkout(WeekDay.monday)
+    val apple = new Apple()
+    checkout.add(apple)
+    checkout.add(apple)
+    checkout.add(apple)
+
+    assert(checkout.calcTotal() == 50)
+  }
+
+  test("test get price of cart with apples when its everyday") {
+    val checkout = new Checkout(WeekDay.everyDay)
+    val apple = new Apple()
+    checkout.add(apple)
+    checkout.add(apple)
+    checkout.add(apple)
+
+    assert(checkout.calcTotal() == 60)
+  }
+
+  test("test get price of cart with apples when its friday") {
+    val checkout = new Checkout(WeekDay.friday)
+    val apple = new Apple()
+    checkout.add(apple)
+    checkout.add(apple)
+    checkout.add(apple)
+
+    assert(checkout.calcTotal() == 60)
+  }
+
+  test("test get price of cart with apples when its friday with discount") {
+    val checkout = new Checkout(WeekDay.friday)
+    val apple = new Apple()
+    for (i <- 1 to 30) checkout.add(apple)
+
+    assert(checkout.calcTotal() == 450)
   }
 
 }
